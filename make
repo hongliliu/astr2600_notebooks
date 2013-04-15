@@ -23,7 +23,9 @@ os.remove(html)
 notOK = os.system('git checkout gh-pages')
 if notOK: raise Exception
 shutil.copy('/var/tmp/%s' % html,'.')
-notOK = os.system('git commit -a -m "%s updates"' % html)
+notOK = os.system('git add %s' % html)
+if notOK: raise Exception
+notOK = os.system('git commit -m "%s added/updated"' % html)
 if notOK: raise Exception
 notOK = os.system('git push')
 if notOK: raise Exception
