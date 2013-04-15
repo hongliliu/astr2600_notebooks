@@ -29358,7 +29358,8 @@ PM9bSn4C7Hme53me511X/ATY8zzP8zzPu674CbDneZ7neZ53XfETYM/zPM/zPO+64ifAnud5nud5
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Everything below this point can be ignored</p>
-</div>
+</div><div style=display:none>
+    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[617]:</div>
@@ -29382,7 +29383,923 @@ PM9bSn4C7Hme53me511X/ATY8zzP8zzPu674CbDneZ7neZ53XfETYM/zPM/zPO+64ifAnud5nud5
 
 </div>
 </div>
-</div></section>
+</div>
+    </div><div style=display:none>
+    
+<style type="text/css">
+div.reveal {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+div.at-floatingbar-inner {
+    visibility: hidden;
+}
+.cm-s-ipython { background-color: black; color: lightblue; }
+.cm-s-ipython span.cm-keyword {color: #00ff00; font-weight: bold;}
+.cm-s-ipython span.cm-number {color: #ee88ee;}
+.cm-s-ipython span.cm-operator {color: lime; font-weight: bold;}
+.cm-s-ipython span.cm-meta {color: white;}
+.cm-s-ipython span.cm-comment {color: cyan; font-style: italic;}
+.cm-s-ipython span.cm-string {color: red;}
+.cm-s-ipython span.cm-error {color: darkred;}
+.cm-s-ipython span.cm-builtin {color: pink; font-weight: bold;}
+.CodeMirror pre.CodeMirror-cursor {color: white; border-left: 1px solid white;}
+.cm-s-ipython span.cm-variable {color: white;}
+div.text_cell_input  {   background-color: black;    color: white;}
+div.text_cell {   background-color: black;    color: white;}
+div#notebook {    background-color: black;     background-image: none;     color: white;}
+div.code_cell { background-color: black;    color: white;}
+div.metaedit .maintoolbar{    background-color: black;    color: white;}
+body{    background-color: black;    color: white;}
+#notebook_name {  background-color: #333333;    color: white; background-image:none;}
+span.ui-widget-content{  background-color: #333333;    color: white; background-image:none;}
+div.ui-widget-content{  background-color: #333333;    color: white; background-image:none;}
+div#ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only output_collapsed vbox{  
+  background-color: black;    color: white;}
+div.input_area{    background-color: black;    color: white;}
+div.ui-widget-content { background-color: #333333; background-image: none;}
+div.input_prompt {color:#6666CC; font-weight: bold;}
+div.output_prompt {color:#CC6666; font-weight: bold;}
+div.output_text {color:white;}
+div.text_cell_render {color:white;}
+.pln {color:white} 
+.typ {color:#f9f}
+.lit {color:#BBB}
+.kwd {color:#3e3}
+.metaedit {background: transparent; border-color: transparent; color:white;}
+.ui-button-text {background: #112; color:white; border-color:666;}
+.ui-menubar  {background-color: transparent; background: transparent; background-image:none;}
+.ui-widget-header  {background-color: transparent; background: transparent; background-image:none;}
+.ui-helper-clearfix {background-color: transparent; background: transparent; background-image:none;}
+.ui-corner-all {background: #112; color: white;}
+.ui-widget  {background: #112; color: white;}
+.ui-widget-content {background: #112; color: white;}
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {color:white;}
+div.output_area pre {color:white;}
+.highlight {background-color: #222; color:white;}
+</style>
+
+    </div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[135]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="k">def</span> <span class="nf">blackbg</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;Black Background code mirror theme.&quot;&quot;&quot;</span>
+	<span class="n">html</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">&lt;style type=&quot;text/css&quot;&gt;</span>
+<span class="s">.cm-s-ipython { background-color: black; color: lightblue; }</span>
+<span class="s">.cm-s-ipython span.cm-keyword {color: #00ff00; font-weight: bold;}</span>
+<span class="s">.cm-s-ipython span.cm-number {color: #ee88ee;}</span>
+<span class="s">.cm-s-ipython span.cm-operator {color: lime; font-weight: bold;}</span>
+<span class="s">.cm-s-ipython span.cm-meta {color: white;}</span>
+<span class="s">.cm-s-ipython span.cm-comment {color: cyan; font-style: italic;}</span>
+<span class="s">.cm-s-ipython span.cm-string {color: red;}</span>
+<span class="s">.cm-s-ipython span.cm-error {color: darkred;}</span>
+<span class="s">.cm-s-ipython span.cm-builtin {color: pink; font-weight: bold;}</span>
+<span class="s">.CodeMirror pre.CodeMirror-cursor {color: white; border-left: 1px solid white;}</span>
+<span class="s">.cm-s-ipython span.cm-variable {color: white;}</span>
+<span class="s">div.text_cell_input  {   background-color: black;    color: white;}</span>
+<span class="s">div.text_cell {   background-color: black;    color: white;}</span>
+<span class="s">div#notebook {    background-color: black;     background-image: none;     color: white;}</span>
+<span class="s">div.code_cell { background-color: black;    color: white;}</span>
+<span class="s">div.metaedit .maintoolbar{    background-color: black;    color: white;}</span>
+<span class="s">body{    background-color: black;    color: white;}</span>
+<span class="s">#notebook_name {  background-color: #333333;    color: white; background-image:none;}</span>
+<span class="s">span.ui-widget-content{  background-color: #333333;    color: white; background-image:none;}</span>
+<span class="s">div.ui-widget-content{  background-color: #333333;    color: white; background-image:none;}</span>
+<span class="s">div#ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only output_collapsed vbox{  </span>
+<span class="s">  background-color: black;    color: white;}</span>
+<span class="s">div.input_area{    background-color: black;    color: white;}</span>
+<span class="s">div.ui-widget-content { background-color: #333333; background-image: none;}</span>
+<span class="s">div.input_prompt {color:#6666CC; font-weight: bold;}</span>
+<span class="s">div.output_prompt {color:#CC6666; font-weight: bold;}</span>
+<span class="s">div.output_text {color:white;}</span>
+<span class="s">div.text_cell_render {color:white;}</span>
+<span class="s">.pln {color:white} </span>
+<span class="s">.typ {color:#f9f}</span>
+<span class="s">.lit {color:#BBB}</span>
+<span class="s">.kwd {color:#3e3}</span>
+<span class="s">.metaedit {background: transparent; border-color: transparent; color:white;}</span>
+<span class="s">.ui-button-text {background: #112; color:white; border-color:666;}</span>
+<span class="s">.ui-menubar  {background-color: transparent; background: transparent; background-image:none;}</span>
+<span class="s">.ui-widget-header  {background-color: transparent; background: transparent; background-image:none;}</span>
+<span class="s">.ui-helper-clearfix {background-color: transparent; background: transparent; background-image:none;}</span>
+<span class="s">.ui-corner-all {background: #112; color: white;}</span>
+<span class="s">.ui-widget  {background: #112; color: white;}</span>
+<span class="s">.ui-widget-content {background: #112; color: white;}</span>
+<span class="s">&lt;/style&gt;&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+<span class="n">blackbg</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out[135]:</div>
+<div class="output vbox">
+<div class="box-flex1 output_subarea output_pyout">
+<div class="output_html rendered_html">
+
+<style type="text/css">
+.cm-s-ipython { background-color: black; color: lightblue; }
+.cm-s-ipython span.cm-keyword {color: #00ff00; font-weight: bold;}
+.cm-s-ipython span.cm-number {color: #ee88ee;}
+.cm-s-ipython span.cm-operator {color: lime; font-weight: bold;}
+.cm-s-ipython span.cm-meta {color: white;}
+.cm-s-ipython span.cm-comment {color: cyan; font-style: italic;}
+.cm-s-ipython span.cm-string {color: red;}
+.cm-s-ipython span.cm-error {color: darkred;}
+.cm-s-ipython span.cm-builtin {color: pink; font-weight: bold;}
+.CodeMirror pre.CodeMirror-cursor {color: white; border-left: 1px solid white;}
+.cm-s-ipython span.cm-variable {color: white;}
+div.text_cell_input  {   background-color: black;    color: white;}
+div.text_cell {   background-color: black;    color: white;}
+div#notebook {    background-color: black;     background-image: none;     color: white;}
+div.code_cell { background-color: black;    color: white;}
+div.metaedit .maintoolbar{    background-color: black;    color: white;}
+body{    background-color: black;    color: white;}
+#notebook_name {  background-color: #333333;    color: white; background-image:none;}
+span.ui-widget-content{  background-color: #333333;    color: white; background-image:none;}
+div.ui-widget-content{  background-color: #333333;    color: white; background-image:none;}
+div#ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only output_collapsed vbox{  
+  background-color: black;    color: white;}
+div.input_area{    background-color: black;    color: white;}
+div.ui-widget-content { background-color: #333333; background-image: none;}
+div.input_prompt {color:#6666CC; font-weight: bold;}
+div.output_prompt {color:#CC6666; font-weight: bold;}
+div.output_text {color:white;}
+div.text_cell_render {color:white;}
+.pln {color:white} 
+.typ {color:#f9f}
+.lit {color:#BBB}
+.kwd {color:#3e3}
+.metaedit {background: transparent; border-color: transparent; color:white;}
+.ui-button-text {background: #112; color:white; border-color:666;}
+.ui-menubar  {background-color: transparent; background: transparent; background-image:none;}
+.ui-widget-header  {background-color: transparent; background: transparent; background-image:none;}
+.ui-helper-clearfix {background-color: transparent; background: transparent; background-image:none;}
+.ui-corner-all {background: #112; color: white;}
+.ui-widget  {background: #112; color: white;}
+.ui-widget-content {background: #112; color: white;}
+</style>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[338]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># A nice commented mandelbrot code from</span>
+<span class="c"># http://thesamovar.wordpress.com/2009/03/22/fast-fractals-with-python-and-numpy/#viewSource</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">mandel</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">itermax</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Fast mandelbrot computation using numpy.</span>
+
+<span class="sd">    (n, m) are the output image dimensions</span>
+<span class="sd">    itermax is the maximum number of iterations to do</span>
+<span class="sd">    xmin, xmax, ymin, ymax specify the region of the</span>
+<span class="sd">    set to compute.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c"># The point of ix and iy is that they are 2D arrays</span>
+    <span class="c"># giving the x-coord and y-coord at each point in</span>
+    <span class="c"># the array. The reason for doing this will become</span>
+    <span class="c"># clear below...</span>
+    <span class="n">ix</span><span class="p">,</span> <span class="n">iy</span> <span class="o">=</span> <span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">m</span><span class="p">]</span>
+    <span class="c"># Now x and y are the x-values and y-values at each</span>
+    <span class="c"># point in the array, linspace(start, end, n)</span>
+    <span class="c"># is an array of n linearly spaced points between</span>
+    <span class="c"># start and end, and we then index this array using</span>
+    <span class="c"># numpy fancy indexing. If A is an array and I is</span>
+    <span class="c"># an array of indices, then A[I] has the same shape</span>
+    <span class="c"># as I and at each place i in I has the value A[i].</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">n</span><span class="p">)[</span><span class="n">ix</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">m</span><span class="p">)[</span><span class="n">iy</span><span class="p">]</span>
+    <span class="c"># c is the complex number with the given x, y coords</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">y</span>
+    <span class="k">del</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="c"># save a bit of memory, we only need z</span>
+    <span class="c"># the output image coloured according to the number</span>
+    <span class="c"># of iterations it takes to get to the boundary</span>
+    <span class="c"># abs(z)&gt;2</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="c"># Here is where the improvement over the standard</span>
+    <span class="c"># algorithm for drawing fractals in numpy comes in.</span>
+    <span class="c"># We flatten all the arrays ix, iy and c. This</span>
+    <span class="c"># flattening doesn&#39;t use any more memory because</span>
+    <span class="c"># we are just changing the shape of the array, the</span>
+    <span class="c"># data in memory stays the same. It also affects</span>
+    <span class="c"># each array in the same way, so that index i in</span>
+    <span class="c"># array c has x, y coords ix[i], iy[i]. The way the</span>
+    <span class="c"># algorithm works is that whenever abs(z)&gt;2 we</span>
+    <span class="c"># remove the corresponding index from each of the</span>
+    <span class="c"># arrays ix, iy and c. Since we do the same thing</span>
+    <span class="c"># to each array, the correspondence between c and</span>
+    <span class="c"># the x, y coords stored in ix and iy is kept.</span>
+    <span class="n">ix</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">m</span>
+    <span class="n">iy</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">m</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">m</span>
+    <span class="c"># we iterate z-&gt;z^2+c with z starting at 0, but the</span>
+    <span class="c"># first iteration makes z=c so we just start there.</span>
+    <span class="c"># We need to copy c because otherwise the operation</span>
+    <span class="c"># z-&gt;z^2 will send c-&gt;c^2.</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">itermax</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">):</span> <span class="k">break</span> <span class="c"># all points have escaped</span>
+        <span class="c"># equivalent to z = z*z+c but quicker and uses</span>
+        <span class="c"># less memory</span>
+        <span class="n">multiply</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+        <span class="n">add</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+        <span class="c"># these are the points that have escaped</span>
+        <span class="n">rem</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">2.0</span>
+        <span class="c"># colour them with the iteration number, we</span>
+        <span class="c"># add one so that points which haven&#39;t</span>
+        <span class="c"># escaped have 0 as their iteration number,</span>
+        <span class="c"># this is why we keep the arrays ix and iy</span>
+        <span class="c"># because we need to know which point in img</span>
+        <span class="c"># to colour</span>
+        <span class="n">img</span><span class="p">[</span><span class="n">ix</span><span class="p">[</span><span class="n">rem</span><span class="p">],</span> <span class="n">iy</span><span class="p">[</span><span class="n">rem</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="c"># -rem is the array of points which haven&#39;t</span>
+        <span class="c"># escaped, in numpy -A for a boolean array A</span>
+        <span class="c"># is the NOT operation.</span>
+        <span class="n">rem</span> <span class="o">=</span> <span class="o">-</span><span class="n">rem</span>
+        <span class="c"># So we select out the points in</span>
+        <span class="c"># z, ix, iy and c which are still to be</span>
+        <span class="c"># iterated on in the next step</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="n">rem</span><span class="p">]</span>
+        <span class="n">ix</span><span class="p">,</span> <span class="n">iy</span> <span class="o">=</span> <span class="n">ix</span><span class="p">[</span><span class="n">rem</span><span class="p">],</span> <span class="n">iy</span><span class="p">[</span><span class="n">rem</span><span class="p">]</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">rem</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">img</span>
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">mandel</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&#39;Time taken:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">start</span>
+    <span class="n">I</span><span class="p">[</span><span class="n">I</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">101</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">imshow</span><span class="p">(</span><span class="n">I</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower left&#39;</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">write_png</span><span class="p">(</span><span class="s">&#39;mandel.png&#39;</span><span class="p">,</span> <span class="n">noscale</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output vbox">
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>Time taken: 0.564753055573
+</pre>
+</div><div class="box-flex1 output_subarea output_display_data">
+
+<img src="data:image/png;base64,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
+">
+</div>
+</div>
+
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[608]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">dot</span> <span class="o">--</span><span class="n">format</span> <span class="n">svg</span> <span class="o">--</span>
+<span class="n">digraph</span> <span class="n">G</span> <span class="p">{</span>
+   <span class="mi">16</span> <span class="o">-&gt;</span> <span class="mi">12</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;L&quot;</span><span class="p">];</span> 
+   <span class="mi">16</span> <span class="o">-&gt;</span> <span class="mi">25</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;R&quot;</span><span class="p">];</span>
+   <span class="mi">12</span> <span class="o">-&gt;</span> <span class="mi">11</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;L&quot;</span><span class="p">];</span>
+   <span class="mi">12</span> <span class="o">-&gt;</span> <span class="mi">15</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;R&quot;</span><span class="p">];</span>
+   <span class="mi">25</span> <span class="o">-&gt;</span> <span class="n">C</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;L&quot;</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">];</span>
+   <span class="mi">25</span> <span class="o">-&gt;</span> <span class="mi">29</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;R&quot;</span><span class="p">];</span>
+   <span class="n">empty2</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;empty&quot;</span><span class="p">];</span>
+   <span class="mi">15</span> <span class="o">-&gt;</span> <span class="n">D</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;L&quot;</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">];</span>
+   <span class="mi">15</span> <span class="o">-&gt;</span> <span class="mf">15.5</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;R&quot;</span><span class="p">];</span>
+   <span class="mi">29</span> <span class="o">-&gt;</span> <span class="n">E</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;L&quot;</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">];</span>
+   <span class="mi">29</span> <span class="o">-&gt;</span> <span class="mi">30</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;R&quot;</span><span class="p">];</span>
+   <span class="mf">15.5</span> <span class="o">-&gt;</span> <span class="n">A</span> <span class="p">[</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">];</span>
+   <span class="mf">15.5</span> <span class="o">-&gt;</span> <span class="n">B</span> <span class="p">[</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">];</span>   
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output vbox">
+<div class="box-flex1 output_subarea output_display_data">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.28.0 (20111028.1807)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="337pt" height="388pt"
+ viewBox="0.00 0.00 337.00 388.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 384)">
+<title>G</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-384 334,-384 334,5 -4,5"/>
+<!-- 16 -->
+<g id="node1" class="node"><title>16</title>
+<ellipse fill="none" stroke="black" cx="140" cy="-362" rx="27" ry="18"/>
+<text text-anchor="middle" x="140" y="-356.4" font-family="Times,serif" font-size="14.00">16</text>
+</g>
+<!-- 12 -->
+<g id="node3" class="node"><title>12</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-272" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-266.4" font-family="Times,serif" font-size="14.00">12</text>
+</g>
+<!-- 16&#45;&gt;12 -->
+<g id="edge2" class="edge"><title>16&#45;&gt;12</title>
+<path fill="none" stroke="black" d="M132.288,-344.448C126.275,-331.542 117.818,-313.39 110.933,-298.613"/>
+<polygon fill="black" stroke="black" points="114.073,-297.064 106.677,-289.478 107.728,-300.021 114.073,-297.064"/>
+<text text-anchor="middle" x="128.276" y="-311.4" font-family="Times,serif" font-size="14.00">L</text>
+</g>
+<!-- 25 -->
+<g id="node5" class="node"><title>25</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-272" rx="27" ry="18"/>
+<text text-anchor="middle" x="171" y="-266.4" font-family="Times,serif" font-size="14.00">25</text>
+</g>
+<!-- 16&#45;&gt;25 -->
+<g id="edge4" class="edge"><title>16&#45;&gt;25</title>
+<path fill="none" stroke="black" d="M145.977,-344.033C150.466,-331.291 156.694,-313.61 161.814,-299.076"/>
+<polygon fill="black" stroke="black" points="165.125,-300.212 165.146,-289.617 158.523,-297.886 165.125,-300.212"/>
+<text text-anchor="middle" x="163.669" y="-311.4" font-family="Times,serif" font-size="14.00">R</text>
+</g>
+<!-- 11 -->
+<g id="node7" class="node"><title>11</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-182" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-176.4" font-family="Times,serif" font-size="14.00">11</text>
+</g>
+<!-- 12&#45;&gt;11 -->
+<g id="edge6" class="edge"><title>12&#45;&gt;11</title>
+<path fill="none" stroke="black" d="M86.4586,-255.672C75.3083,-242.043 58.8401,-221.916 46.0607,-206.296"/>
+<polygon fill="black" stroke="black" points="48.439,-203.676 39.3977,-198.153 43.0213,-208.109 48.439,-203.676"/>
+<text text-anchor="middle" x="74.2759" y="-221.4" font-family="Times,serif" font-size="14.00">L</text>
+</g>
+<!-- 15 -->
+<g id="node9" class="node"><title>15</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-182" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-176.4" font-family="Times,serif" font-size="14.00">15</text>
+</g>
+<!-- 12&#45;&gt;15 -->
+<g id="edge8" class="edge"><title>12&#45;&gt;15</title>
+<path fill="none" stroke="black" d="M99,-253.614C99,-241.24 99,-224.369 99,-210.22"/>
+<polygon fill="black" stroke="black" points="102.5,-210.05 99,-200.05 95.5001,-210.05 102.5,-210.05"/>
+<text text-anchor="middle" x="103.669" y="-221.4" font-family="Times,serif" font-size="14.00">R</text>
+</g>
+<!-- C -->
+<g id="node11" class="node"><title>C</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-182" rx="27" ry="18"/>
+<text text-anchor="middle" x="171" y="-176.4" font-family="Times,serif" font-size="14.00">C</text>
+</g>
+<!-- 25&#45;&gt;C -->
+<g id="edge10" class="edge"><title>25&#45;&gt;C</title>
+<path fill="none" stroke="red" d="M171,-253.614C171,-241.24 171,-224.369 171,-210.22"/>
+<polygon fill="red" stroke="red" points="174.5,-210.05 171,-200.05 167.5,-210.05 174.5,-210.05"/>
+<text text-anchor="middle" x="175.276" y="-221.4" font-family="Times,serif" font-size="14.00">L</text>
+</g>
+<!-- 29 -->
+<g id="node13" class="node"><title>29</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-182" rx="27" ry="18"/>
+<text text-anchor="middle" x="243" y="-176.4" font-family="Times,serif" font-size="14.00">29</text>
+</g>
+<!-- 25&#45;&gt;29 -->
+<g id="edge12" class="edge"><title>25&#45;&gt;29</title>
+<path fill="none" stroke="black" d="M183.541,-255.672C194.692,-242.043 211.16,-221.916 223.939,-206.296"/>
+<polygon fill="black" stroke="black" points="226.979,-208.109 230.602,-198.153 221.561,-203.676 226.979,-208.109"/>
+<text text-anchor="middle" x="218.669" y="-221.4" font-family="Times,serif" font-size="14.00">R</text>
+</g>
+<!-- D -->
+<g id="node16" class="node"><title>D</title>
+<ellipse fill="none" stroke="black" cx="59" cy="-92" rx="27" ry="18"/>
+<text text-anchor="middle" x="59" y="-86.4" font-family="Times,serif" font-size="14.00">D</text>
+</g>
+<!-- 15&#45;&gt;D -->
+<g id="edge14" class="edge"><title>15&#45;&gt;D</title>
+<path fill="none" stroke="red" d="M91.4763,-164.448C85.61,-151.542 77.3592,-133.39 70.6421,-118.613"/>
+<polygon fill="red" stroke="red" points="73.8143,-117.133 66.49,-109.478 67.4418,-120.03 73.8143,-117.133"/>
+<text text-anchor="middle" x="87.2759" y="-131.4" font-family="Times,serif" font-size="14.00">L</text>
+</g>
+<!-- 15.5 -->
+<g id="node18" class="node"><title>15.5</title>
+<ellipse fill="none" stroke="black" cx="132" cy="-92" rx="27.4055" ry="18"/>
+<text text-anchor="middle" x="132" y="-86.4" font-family="Times,serif" font-size="14.00">15.5</text>
+</g>
+<!-- 15&#45;&gt;15.5 -->
+<g id="edge16" class="edge"><title>15&#45;&gt;15.5</title>
+<path fill="none" stroke="black" d="M105.207,-164.448C109.97,-151.746 116.639,-133.962 122.132,-119.315"/>
+<polygon fill="black" stroke="black" points="125.474,-120.369 125.709,-109.777 118.92,-117.911 125.474,-120.369"/>
+<text text-anchor="middle" x="123.669" y="-131.4" font-family="Times,serif" font-size="14.00">R</text>
+</g>
+<!-- E -->
+<g id="node20" class="node"><title>E</title>
+<ellipse fill="none" stroke="black" cx="230" cy="-92" rx="27" ry="18"/>
+<text text-anchor="middle" x="230" y="-86.4" font-family="Times,serif" font-size="14.00">E</text>
+</g>
+<!-- 29&#45;&gt;E -->
+<g id="edge18" class="edge"><title>29&#45;&gt;E</title>
+<path fill="none" stroke="red" d="M240.493,-164.033C238.671,-151.695 236.164,-134.727 234.058,-120.469"/>
+<polygon fill="red" stroke="red" points="237.467,-119.597 232.543,-110.215 230.542,-120.62 237.467,-119.597"/>
+<text text-anchor="middle" x="242.276" y="-131.4" font-family="Times,serif" font-size="14.00">L</text>
+</g>
+<!-- 30 -->
+<g id="node22" class="node"><title>30</title>
+<ellipse fill="none" stroke="black" cx="302" cy="-92" rx="27" ry="18"/>
+<text text-anchor="middle" x="302" y="-86.4" font-family="Times,serif" font-size="14.00">30</text>
+</g>
+<!-- 29&#45;&gt;30 -->
+<g id="edge20" class="edge"><title>29&#45;&gt;30</title>
+<path fill="none" stroke="black" d="M253.548,-165.267C262.525,-151.878 275.563,-132.431 285.853,-117.083"/>
+<polygon fill="black" stroke="black" points="288.882,-118.851 291.543,-108.596 283.067,-114.953 288.882,-118.851"/>
+<text text-anchor="middle" x="281.669" y="-131.4" font-family="Times,serif" font-size="14.00">R</text>
+</g>
+<!-- empty2 -->
+<g id="node14" class="node"><title>empty2</title>
+<ellipse fill="none" stroke="black" cx="220" cy="-362" rx="35.2617" ry="18"/>
+<text text-anchor="middle" x="220" y="-356.4" font-family="Times,serif" font-size="14.00">empty</text>
+</g>
+<!-- A -->
+<g id="node24" class="node"><title>A</title>
+<ellipse fill="none" stroke="black" cx="96" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="96" y="-12.4" font-family="Times,serif" font-size="14.00">A</text>
+</g>
+<!-- 15.5&#45;&gt;A -->
+<g id="edge22" class="edge"><title>15.5&#45;&gt;A</title>
+<path fill="none" stroke="red" d="M123.831,-74.6621C119.366,-65.7326 113.737,-54.475 108.712,-44.4243"/>
+<polygon fill="red" stroke="red" points="111.739,-42.6523 104.137,-35.2733 105.478,-45.7828 111.739,-42.6523"/>
+</g>
+<!-- B -->
+<g id="node26" class="node"><title>B</title>
+<ellipse fill="none" stroke="black" cx="168" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="168" y="-12.4" font-family="Times,serif" font-size="14.00">B</text>
+</g>
+<!-- 15.5&#45;&gt;B -->
+<g id="edge24" class="edge"><title>15.5&#45;&gt;B</title>
+<path fill="none" stroke="red" d="M140.169,-74.6621C144.634,-65.7326 150.263,-54.475 155.288,-44.4243"/>
+<polygon fill="red" stroke="red" points="158.522,-45.7828 159.863,-35.2733 152.261,-42.6523 158.522,-45.7828"/>
+</g>
+</g>
+</svg>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+    </aside><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[115]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">dot</span> <span class="o">--</span><span class="n">format</span> <span class="n">svg</span> <span class="o">--</span>
+<span class="n">digraph</span> <span class="n">G</span> <span class="p">{</span>
+   <span class="n">BinaryTree</span> <span class="o">-&gt;</span> <span class="n">Left</span><span class="p">;</span>
+   <span class="n">BinaryTree</span> <span class="o">-&gt;</span> <span class="n">Right</span><span class="p">;</span>
+<span class="p">}</span>      
+<span class="n">digraph</span> <span class="n">B</span> <span class="p">{</span>
+   <span class="n">rankdir</span><span class="o">=</span><span class="s">&quot;LR&quot;</span><span class="p">;</span>
+   <span class="n">LinkedList</span><span class="o">-&gt;</span><span class="n">NextNode</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output vbox">
+<div class="box-flex1 output_subarea output_display_data">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.28.0 (20111028.1807)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="145pt" height="116pt"
+ viewBox="0.00 0.00 145.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>G</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-112 142,-112 142,5 -4,5"/>
+<!-- BinaryTree -->
+<g id="node1" class="node"><title>BinaryTree</title>
+<ellipse fill="none" stroke="black" cx="66" cy="-90" rx="54.5074" ry="18"/>
+<text text-anchor="middle" x="66" y="-84.4" font-family="Times,serif" font-size="14.00">BinaryTree</text>
+</g>
+<!-- Left -->
+<g id="node3" class="node"><title>Left</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-18" rx="27.1809" ry="18"/>
+<text text-anchor="middle" x="27" y="-12.4" font-family="Times,serif" font-size="14.00">Left</text>
+</g>
+<!-- BinaryTree&#45;&gt;Left -->
+<g id="edge2" class="edge"><title>BinaryTree&#45;&gt;Left</title>
+<path fill="none" stroke="black" d="M56.5592,-72.055C51.8927,-63.6793 46.1679,-53.4039 41.0033,-44.1341"/>
+<polygon fill="black" stroke="black" points="44.0099,-42.3392 36.0853,-35.307 37.8949,-45.7462 44.0099,-42.3392"/>
+</g>
+<!-- Right -->
+<g id="node5" class="node"><title>Right</title>
+<ellipse fill="none" stroke="black" cx="105" cy="-18" rx="32.2509" ry="18"/>
+<text text-anchor="middle" x="105" y="-12.4" font-family="Times,serif" font-size="14.00">Right</text>
+</g>
+<!-- BinaryTree&#45;&gt;Right -->
+<g id="edge4" class="edge"><title>BinaryTree&#45;&gt;Right</title>
+<path fill="none" stroke="black" d="M75.4408,-72.055C80.1073,-63.6793 85.8321,-53.4039 90.9967,-44.1341"/>
+<polygon fill="black" stroke="black" points="94.1051,-45.7462 95.9147,-35.307 87.9901,-42.3392 94.1051,-45.7462"/>
+</g>
+</g>
+</svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.28.0 (20111028.1807)
+ -->
+<!-- Title: B Pages: 1 -->
+<svg width="254pt" height="44pt"
+ viewBox="0.00 0.00 254.00 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>B</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-40 251,-40 251,5 -4,5"/>
+<!-- LinkedList -->
+<g id="node1" class="node"><title>LinkedList</title>
+<ellipse fill="none" stroke="black" cx="54" cy="-18" rx="53.326" ry="18"/>
+<text text-anchor="middle" x="54" y="-12.4" font-family="Times,serif" font-size="14.00">LinkedList</text>
+</g>
+<!-- NextNode -->
+<g id="node3" class="node"><title>NextNode</title>
+<ellipse fill="none" stroke="black" cx="195" cy="-18" rx="50.9515" ry="18"/>
+<text text-anchor="middle" x="195" y="-12.4" font-family="Times,serif" font-size="14.00">NextNode</text>
+</g>
+<!-- LinkedList&#45;&gt;NextNode -->
+<g id="edge2" class="edge"><title>LinkedList&#45;&gt;NextNode</title>
+<path fill="none" stroke="black" d="M107.55,-18C116.17,-18 125.161,-18 133.946,-18"/>
+<polygon fill="black" stroke="black" points="134.131,-21.5001 144.131,-18 134.131,-14.5001 134.131,-21.5001"/>
+</g>
+</g>
+</svg>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+    </div></section>
     </section>
 
 </div></div>
