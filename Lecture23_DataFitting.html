@@ -6978,11 +6978,13 @@ noisylogplpl = plot(x,noisy_y,color='k',symbol='o',sym_size=0.3,overplot=logplpl
 </div>
 </div>
 </div>
-    </div>
+    </div><div class="fragment">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In order to get around this problem, we need to <em>mask the data</em>.  That means we have to tell the code to ignore all the data points where <code>noisy_y</code> is <code>nan</code>.</p>
 <p>My favorite way to do this is to take advantage of a curious fact:  $1=1$, but <code>nan</code>!=<code>nan</code>.  With IDL, you can use the <code>finite</code> function.</p>
-</div></section><section>
+</div>
+    </div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
