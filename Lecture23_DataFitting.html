@@ -5071,7 +5071,7 @@ U8znAAAAAElFTkSuQmCC
 <p>IDL Equivalent:</p>
 <pre><code>noise = randomn(seed,n_elements(x))
 noisy_flux = y + noise
-fitpl = plot(x,noisy_flux,color='k', symbol='o', sym_size=0.3, overplot=curvepl, linestyle='', sym_filled=1)
+noisypl = plot(x,noisy_flux,color='k', symbol='o', sym_size=0.3, overplot=curvepl, linestyle='', sym_filled=1)
 </code></pre>
 </div></section>
     </section><section>
@@ -5228,6 +5228,9 @@ end
 <pre><code>errorbars = replicate(1.,n_elements(x))
 guesses = [0.,0.]
 params = mpfitfun("shifted_sin",x,noisy_flux,errorbars,guesses)
+</code></pre>
+<p>Finally, plot it:</p>
+<pre><code>fitpl = plot(x,shifted_sin(x,params), color='r', overplot=curvepl)
 </code></pre>
 </div></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -5662,7 +5665,9 @@ hOrfQY0AAAAASUVORK5CYII=
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Again, this is pretty good despite the noisiness.</p>
-</div>
+</div></section>
+    </section><section>
+    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1>Fitting a Power Law</h1>
 <p>Power laws occur all the time in physis, so it's a good idea to learn how to use them.</p>
@@ -5677,7 +5682,7 @@ We'll use the substitutions $y=\ln(f(t))$, $A=\ln(a)$, and $x=\ln(t)$, so that
 $$y=a+bx$$
 which looks just like our linear equation from before (albeit with different letters for the fit parameters).</p>
 <p>We'll now go through the same fitting exercise as before, but using powerlaws instead of lines.</p>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
@@ -5981,10 +5986,23 @@ VJIkSaGzlEqSJCl0llJJkiSFzlIqSZKk0P0/5P5bJIBl1AcAAAAASUVORK5CYII=
 
 </div>
 </div>
-</div>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>IDL Equivalent:</p>
+<pre><code>t = findgen(50)/49.*(10-0.1)+0.1
+a = 1.5
+b = 2.5
+z = a*t^b 
+plpl = plot(t,z,color='b')
+</code></pre>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we'll re-make this plot as a log-log plot.</p>
+</div><div class="fragment">
+    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c"># Change the variables</span>
 <span class="c"># np.log is the natural log</span>
@@ -5998,293 +6016,18 @@ VJIkSaGzlEqSJCl0llJJkiSFzlIqSZKk0P0/5P5bJIBl1AcAAAAASUVORK5CYII=
 
 </div>
 </div>
-<div class="vbox output_wrapper">
-<div class="hbox output_area">
-<div class="prompt output_prompt">Out[24]:</div>
-<div class="output vbox">
-<div class="box-flex1 output_subarea output_pyout">
-
-<pre>&lt;matplotlib.text.Text at 0x10759ec50&gt;</pre>
-</div><div class="box-flex1 output_subarea output_display_data">
-
-<img src="data:image/png;base64,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
-V2fIkCHs3r077NEEDB06lIYNG1K6dOkDbkenwjVu3Li9F6Ced955LFiwIOyREt6sWbO44oor+O1v
-f0tycjKTJ08OeyT9zLBhw6hbty7HHnssxx9/PK1bt2blypVhjyVg/PjxnHPOOaSkpJCSkkLDhg2Z
-Nm1art9f5MNr06ZNeemll1i5ciUvv/wya9as4eqrrw57LAGffPIJsViMxx9/nOXLlzN69GgeffRR
-brvttrBHE8FFkddeey09evQIe5SE98ILLzBgwADuvvtuFi1axDnnnEOLFi349ttvwx4toW3fvp1a
-tWoxbtw4AJKSkkKeSD83a9Ysevfuzfvvv8/06dPZvXs3l1xyCdu3bw97tIRXuXJl7r//fjIzM1m4
-cCFNmzblyiuvzPXNpxJu2cCUKVNo3bo1u3btolixYmGPo18YOXIk48ePZ82aNWGPov9v4sSJ9OvX
-jx9++CHsURJW/fr1qV+/Pg899BAAsViMypUr07t3bwYNGhTydAJITk7mtdde48orrwx7FP2KTZs2
-UalSJWbNmkXjxo3DHke/cNxxxzFy5Eg6dux4yNcW+eb1577//nsmTZrERRddZHCNU1lZWRx33HFh
-jyHFjV27dpGZmUmzZs32HktKSqJZs2bMnTs3xMmkaMnKygKgQoUKIU+in8vOzub5559n586dnH/+
-+bl6T0KE10GDBlG2bFkqVqzIZ599xgsvvBD2SDqA1atX8/DDD9O1a9ewR5HixqZNm8jOzub444/f
-53ilSpXYsGFDSFNJ0ZKTk0N6ejqNGzfe54ZHCs/SpUspW7YspUqVokuXLrz44otUr149V++NZHi9
-5ZZbSE5OPujj54uyb775Zj788EPeeustSpYsyR/+8AcSbLVEocrr+QFYv349l156KW3atKFz584h
-TV70Hc65kaSo69mzJ8uXL+f5558PexT9f2eccQZLlixh/vz59OrVi+uuu47MzMxcvTeSa143bdrE
-999/f9DXVKtWjaOOOmq/4+vXr6dy5crMnj07z3d0UO7k9fx89dVXNGnShIYNGzJx4sRCmDBxHc7v
-Hde8hmvXrl2UKVOGl19+eZ/1lO3bt2fz5s28+uqrIU6n/3LNa/zq1asXr7/+OrNmzfrVu3IqfM2b
-N6dq1ao88cQTh3xtZG5S8HO5va3sgWRnZ+/zT+W/vJyf9evXc9FFF1G3bl2eeuqpAp5MR/J7R+Eo
-UaIEqampzJgxY28wysnJ4e2336ZPnz4hTyfFr1gsRu/evZk8eTIzZ840uMa57OxscnJycvXaSIbX
-3Jo/fz7z58+ncePGlC9fnjVr1nDnnXdy2mmn0aBBg7DHS3jr16+nSZMmVK1alREjRrBx48a9Xzvh
-hBNCnEwA69at4/vvv2fdunVkZ2ezePFiYrEYp512GmXKlAl7vITSv39/2rdvT506dahbty5jxoxh
-x44duboqVwVn27ZtrFq1au/zTz/9lA8//JDjjjuOypUrhziZIFgqkJGRweTJkylTpszeNeLlypWj
-VKlSIU+X2G699VZatWpF5cqV2bJlC//4xz+YNWsWd9xxR+4+IFaELV26NNa0adPYcccdFytVqlSs
-WrVqsR49esS+/vrrsEdTLBZ76qmnYklJSbHk5ORYUlLS3kdycnLYoykWi7Vv336fc/Lff7733nth
-j5aQHn744ViVKlViJUuWjJ133nmx+fPnhz1Swnv33Xf3+z2SlJQU69ixY9ijKRY74PeXpKSk2NNP
-Px32aAmvc+fOsapVq8ZKliwZq1SpUqx58+axGTNm5Pr9kVzzKkmSpMQUyd0GJEmSlJgMr5IkSYoM
-w6skSZIiw/AqSZKkyDC8SpIkKTIMr5JUCJo0aUK/fv0K5HMnTZp00NeMGzeO1q1b5/vPLUlhMLxK
-UiFISkoiKSkpXz/zzTff5IsvvuD666/feyw5OZkpU6bs87obb7yRuXPnsmDBgnz9+SUpDIZXSYqo
-cePG0a5du/1C8S+37y5ZsiTXXHMN48aNK8zxJKlAGF4lqZD98MMPtGvXjgoVKlCmTBlatWrF6tWr
-93nNE088QeXKlSlTpgzXXHMNo0ePpnz58nu//uOPPzJt2jSuvPLKvceqVq0KQOvWrUlOTuaUU07Z
-+7Urr7ySl19+mezs7IL9xUlSATO8SlIh69ChA5mZmbz++uvMnTuXWCxGq1at2LNnDwD/+c9/6N69
-O/369WPx4sU0bdqUoUOH7tOwzp07l2LFilGzZs29xz744AMAJk6cyIYNG/ZZJlCnTh22bdtGZmZm
-If0qJalgFA97AElKJKtWreL1119nzpw5nHfeeQBMmjSJypUrM3nyZP74xz8yduxYWrVqRf/+/QGo
-Xr06c+bM4Y033tjnc0444QSKFSu291jFihUBKFeuHJUqVdrn5y1fvjzHHHMMq1atom7dugX9y5Sk
-AmPzKkmFaMWKFRQvXpz69evvPVahQgVOP/10VqxYAcDKlSupV6/ePu/7ZeDcvHkzZcuWzdPPfeyx
-x7J58+bDnFyS4oPhVZIK0a/tOPDLi6wOJSUlha1bt+bpPZs3byYlJSVP75GkeGN4laRCdOaZZ7Jn
-zx7mzZu399h3333HypUrqVGjBgCnn3468+fP3+d9v9zmqnr16nz99df7XYB11FFHHfCirB9++IEt
-W7ZQvXr1/PqlSFIoDK+SVAj+26xWr16dq666iptuuon//Oc/LF68mLZt23LyySdz1VVXAdC7d2+m
-Tp3K6NGjWbVqFY899hjTpk0jOfn//shu0KAB2dnZLF68eJ+fp2rVqsyYMYMNGzbwww8/7D0+f/58
-SpcuTe3atQvhVytJBcfwKkmF4OfLBZ566ilSU1O5/PLLadiwIUlJSUydOnXvxVcNGzbk0Ucf5YEH
-HuDcc8/lrbfeol+/fpQsWXLvZ6SkpNCyZcv9bkgwatQopk+fzu9+9ztSU1P3Hn/99df505/+tM8F
-XpIURUmxvC60kiQVuptuuomVK1fy3nvv7T325ptv0qNHD1atWrVPK/tLP/30E1WrVmXKlCn7XQgm
-SVFj8ypJcWjkyJEsXryY1atXM3bsWJ555hnat2+/z2tatGhB5cqVycjIOOhn/f3vf6dhw4YGV0lF
-gs2rJMWha6+9lpkzZ7JlyxZOPfVUevfuTZcuXcIeS5JCZ3iVJElSZLhsQJIkSZFheJUkSVJkGF4l
-SZIUGYZXSZIkRYbhVZIkSZFheJUkSVJkGF4lSZIUGYZXSZIkRYbhVZIkSZHx/wAgU7ChTL4o0QAA
-AABJRU5ErkJggg==
-">
 </div>
-</div>
-
-</div>
-</div>
-</div>
+    </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It's a straight line.  Now, for our "fake data", we'll add the noise <em>before</em> transforming from "linear" to "log" space</p>
-</div>
+<p>It's a straight line.  Next, for our "fake data", we'll add the noise <em>before</em> transforming from "linear" to "log" space</p>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>IDL Equivalent:</p>
+<pre><code>y = alog(z)
+x = alog(t)
+logplpl = plot(x,y,color='b',xtitle='log(t)',ytitle='log(z)')
+</code></pre>
+</div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
@@ -6615,7 +6358,13 @@ nQH9X00zb4EAAAAASUVORK5CYII=
 
 </div>
 </div>
-</div>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>IDL Equivalent:</p>
+<pre><code>noisy_z = z + randomn(seed,n_elements(z))*10
+noisyplpl = plot(t,noisy_z,color='k',symbol='o',sym_size=0.3,overplot=plpl,linestyle='',sym_filled=1)
+</code></pre>
+</div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
@@ -6938,7 +6687,13 @@ RU5ErkJggg==
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note how different this looks from the "noisy line" we plotted earlier.  Power laws are much more sensitive to noise!  In fact, there are some data points that don't even show up on this plot because you can't take the log of a negative number.  Any points where the random noise was negative enough that the curve dropped below zero ended up being "NAN", or "Not a Number".  Luckily, our plotter knows to ignore those numbers, but <code>polyfit</code> doesnt.</p>
-</div>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>IDL Equivalent:</p>
+<pre><code>noisy_y = alog(noisy_z)
+noisylogplpl = plot(x,noisy_y,color='k',symbol='o',sym_size=0.3,overplot=logplpl,linestyle='',sym_filled=1)
+</code></pre>
+</div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
@@ -6968,7 +6723,8 @@ RU5ErkJggg==
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
+    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
@@ -6993,10 +6749,11 @@ RU5ErkJggg==
 </div>
 </div>
 </div>
+    </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In order to get around this problem, we need to <em>mask the data</em>.  That means we have to tell the code to ignore all the data points where <code>noisy_y</code> is <code>nan</code>.</p>
-<p>My favorite way to do this is to take advantage of a curious fact:  $1=1$, but <code>nan</code>!=<code>nan</code></p>
-</div>
+<p>My favorite way to do this is to take advantage of a curious fact:  $1=1$, but <code>nan</code>!=<code>nan</code>.  With IDL, you can use the <code>finite</code> function.</p>
+</div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
@@ -7020,7 +6777,7 @@ False
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So if we find all the places were <code>noisy_y</code> != <code>noisy_y</code>, we can get rid of them.  Or we can just use the places where <code>noisy_y</code> equals itself.</p>
 </div>
@@ -7052,7 +6809,7 @@ False
 </div>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This <code>OK</code> array is a "boolean mask".  We can use it as an "index array", which is pretty neat.  </p>
+<p>This <code>OK</code> array is a "boolean mask".  We can use it as an "index array", which is pretty neat.  In IDL, you'd use the <code>where</code> function for this.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -7103,7 +6860,22 @@ masked_noisy_y has length 43
 
 </div>
 </div>
-</div>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>IDL Equivalent:</p>
+<pre><code>; try the bad polyfit
+pars = poly_fit(x,noisy_y,1)
+print,pars 
+; they're nan
+
+OK = finite(noisy_y)
+whok = where(ok,nok)
+print,"There are ",nok," OK values"
+masked_noisy_y = noisy_y[whok]
+masked_x = x[whok]
+pars = poly_fit(masked_x,masked_noisy_y,1)
+</code></pre>
+</div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
@@ -7476,6 +7248,12 @@ g8UrERERESkGi1ciIiIiUoz/AQA1IUD01pIAAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The noise seems to have affected our fit. </p>
 </div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>IDL Equivalent:</p>
+<pre><code>fitted_y = poly(x,pars)
+fitlogplpl = plot(x,fitted_y,color='r',linestyle='--',overplot=logplpl)
+</code></pre>
+</div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
@@ -7881,6 +7659,12 @@ N1uVHaAvlOsAAAAASUVORK5CYII=
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>That's pretty bad.  A "least-squares" approach, as with <code>curve_fit</code>, is probably going to be the better choice.  However, in the absence of noise (i.e., on your homework), this approach <em>should</em> work</p>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>IDL Equivalent:</p>
+<pre><code>fitted_z = exp(fitted_y)
+fitplpl = plot(t,fitted_z,color='r',linestyle='--',overplot=plpl)
+</code></pre>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -8261,7 +8045,22 @@ YII=
 
 </div>
 </div>
-</div>
+</div></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>IDL Equivalent:</p>
+<pre><code>errorbars = replicate(10.,n_elements(t))
+guesses = [0.,0.]
+pars = mpfitfun("powerlaw",t,noisy_z,errorbars,guesses)
+mpfitplpl = plot(t,powerlaw(t,pars),color='g',linestyle='__',thick=3,overplot=plpl)
+</code></pre>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>FIN</p>
+</div></section>
+    </section><section>
+    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1>Tricks with Arrays</h1>
 <p>We need to cover a few syntactic things comparing IDL and python.</p>
@@ -8433,7 +8232,9 @@ The location of the maximum of  sincos  is  0.769369629451
 
 </div>
 </div>
-</div>
+</div></section>
+    </section><section>
+    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1>Recursion</h1>
 <p>The next big programming topic is called <em>recursion</em>.</p>
