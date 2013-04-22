@@ -258,16 +258,26 @@ span#notebook_name {
     position: relative;
 }
 
-#notification {
+#notification_area {
     position: absolute;
-    right: 3px;
-    top: 3px;
+    right: 0px;
+    top: 0px;
+    height: 25px;
+    padding: 3px 0px;
+    padding-right: 3px;
+    z-index: 10;
+}
+
+.notification_widget{
+    float : right;
+    right: 0px;
+    top: 1px;
     height: 25px;
     padding: 3px 6px;
     z-index: 10;
 }
 
-#toolbar {
+.toolbar {
     padding: 3px 15px;
 }
 
@@ -317,6 +327,10 @@ div#notebook {
 
 div#pager_splitter {
     height: 8px;
+}
+
+#pager_container {
+    position : relative;
 }
 
 div#pager {
@@ -431,7 +445,7 @@ div.output_area {
 /* This class is for the output subarea inside the output_area and after
    the prompt div. */
 div.output_subarea {
-    padding: 0.4em 0.4em 0.4em 0.4em;
+    padding: 0.44em 0.4em 0.4em 1px;
 }
 
 /* The rest of the output_* classes are for special styling of the different
@@ -599,6 +613,7 @@ pre, code, kbd, samp { white-space: pre-wrap; }
 .js-error {
     color: darkred;
 }
+
 </style>
 <style type="text/css">
 .rendered_html {color: black;}
@@ -619,8 +634,8 @@ pre, code, kbd, samp { white-space: pre-wrap; }
 .rendered_html ol {list-style:upper-roman; margin: 1em 2em;}
 .rendered_html ol ol {list-style:upper-alpha; margin: 0em 2em;}
 .rendered_html ol ol ol {list-style:decimal; margin: 0em 2em;}
-.rendered_html ol ol ol ol {list-style:lower-alpha; margin 0em 2em;}
-.rendered_html ol ol ol ol ol {list-style:lower-roman; 0em 2em;}
+.rendered_html ol ol ol ol {list-style:lower-alpha; margin: 0em 2em;}
+.rendered_html ol ol ol ol ol {list-style:lower-roman; margin: 0em 2em;}
 
 .rendered_html hr {
     color: black;
@@ -1756,6 +1771,604 @@ div.output_prompt {
 <div class="reveal"><div class="slides">
 
 <section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Recursion</h1>
+<p>The next big programming topic is called <em>recursion</em>.</p>
+<h2><em>Recursion</em></h2>
+<p>The next little programming topic is called recursion.</p>
+<p><img src="http://i.qkme.me/35tnta.jpg"></p>
+<p>For better or worse, you must visit <a href="http://en.wikipedia.org/wiki/Recursion#Recursive_humor">the wiki page on recursion</a></p>
+<p>Recursion is when a function calls itself.  But, a recursive function <em>must</em> have an "end condition" to avoid an infinite loop.
+If you try to make an infinite loop, you will get a "stack overflow" (python will give you an error).  IDL will just loop indefinitely and fail miserably.</p>
+</div></section>
+    </section><section>
+    <section>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">fail</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; an infinite recursion. Will fail &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">fail</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c"># WARNING: this will definitely fail, but it may take a long time! </span>
+<span class="c"># print fail(1)</span>
+</pre></div>
+
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's start with a simple example that shows how recursion works.</p>
+<p>The factorial function is often written like $5!$, which means $5\cdot 4\cdot 3\cdot 2\cdot 1$, which comes out to 120.</p>
+<p>There's one easy way to write it:</p>
+<pre><code>function factorial,x
+    return,product(findgen(x)+1)
+end
+</code></pre>
+<p>This simply makes an array <code>findgen(x)+1</code>, which in the case $x=5$, is <code>[1,2,3,4,5]</code>.  Simple, and it works.</p>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The recursive approach is a little more different, and a little more intellectually challenging.</p>
+<p>The factorial algorithm looks something like:
+    $f(x) = f(x-1)*x$</p>
+<p>That means to evaluate <code>f(x)</code>, you need to evaluate <code>f(x-1)</code>.  </p>
+<p>That means to evaluate <code>f(x-1)</code>, you need to evaluate <code>f(x-2)</code>.  When does it end?</p>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recursion is a useful mathematical tool.  There are some problems that are best solved via recursion.  The most commonly used example is the fibonacci sequence:<br />
+0 1 1 2 3 5 8 13 21 ....<br />
+this sequence is defined by the recursive relation<br />
+$$F_n = F_{n-1} + F_{n-2}$$<br />
+or $$f(n) = f(n-1) + f(n-2)$$</p>
+<p>It has the base conditions:
+$$f(0) = 0$$
+$$f(1) = 1$$</p>
+<p>This one is pretty easy to define in code.  But I'll leave it as an exercise.</p>
+<p>The following code shows a hierarchy of what will happen if you call <code>fibonacci(5)</code>.  Don't worry about trying to understand the 'digraph' code, it's just a graph visualization tool.</p>
+</div><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">install_ext</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tkf</span><span class="o">/</span><span class="n">ipython</span><span class="o">-</span><span class="n">hierarchymagic</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">hierarchymagic</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output vbox">
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>Installed hierarchymagic.py. To use it, type:
+  %load_ext hierarchymagic
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+    </div><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">load_ext</span> <span class="n">hierarchymagic</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+    </div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">dot</span> <span class="o">--</span><span class="n">format</span> <span class="n">svg</span> <span class="o">--</span> 
+<span class="n">digraph</span> <span class="n">G</span> <span class="p">{</span> 
+    <span class="n">f5</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(5)&quot;</span><span class="p">];</span>
+    <span class="n">Lf1</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(1)&quot;</span><span class="p">];</span>
+<span class="n">LLf0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(0)&quot;</span><span class="p">];</span>
+<span class="n">Lf2</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(2)&quot;</span><span class="p">];</span>
+<span class="n">Lf3</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(3)&quot;</span><span class="p">];</span>
+<span class="n">RRf1</span>  <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(1)&quot;</span><span class="p">];</span>
+<span class="n">RRMf1</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(1)&quot;</span><span class="p">];</span>
+<span class="n">RRf0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(0)&quot;</span><span class="p">];</span>
+<span class="n">LLf1</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(1)&quot;</span><span class="p">];</span>
+<span class="n">RMf0</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(0)&quot;</span><span class="p">];</span>
+<span class="n">RMf1</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(1)&quot;</span><span class="p">];</span>
+<span class="n">Rf2</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(2)&quot;</span><span class="p">];</span>
+<span class="n">RMf2</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(2)&quot;</span><span class="p">];</span>
+<span class="n">Rf3</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(3)&quot;</span><span class="p">];</span>
+<span class="n">Rf4</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;f(4)&quot;</span><span class="p">];</span>
+    <span class="n">f5</span><span class="o">-&gt;</span><span class="n">Lf3</span><span class="p">;</span> <span class="n">f5</span><span class="o">-&gt;</span><span class="n">Rf4</span><span class="p">;</span>  
+    <span class="n">Lf3</span><span class="o">-&gt;</span><span class="n">Lf2</span><span class="p">;</span> <span class="n">Lf3</span><span class="o">-&gt;</span><span class="n">Lf1</span><span class="p">;</span>
+    <span class="n">Rf4</span><span class="o">-&gt;</span><span class="n">Rf3</span><span class="p">;</span> <span class="n">Rf4</span><span class="o">-&gt;</span><span class="n">Rf2</span><span class="p">;</span>
+    <span class="n">Rf2</span><span class="o">-&gt;</span><span class="n">RRf1</span><span class="p">;</span> <span class="n">Rf2</span><span class="o">-&gt;</span><span class="n">RRf0</span><span class="p">;</span>
+    <span class="n">Lf2</span><span class="o">-&gt;</span><span class="n">LLf1</span><span class="p">;</span> <span class="n">Lf2</span><span class="o">-&gt;</span><span class="n">LLf0</span><span class="p">;</span>
+    <span class="n">Rf3</span><span class="o">-&gt;</span><span class="n">RMf2</span><span class="p">;</span> <span class="n">Rf3</span><span class="o">-&gt;</span><span class="n">RMf1</span><span class="p">;</span>
+    <span class="n">RMf2</span><span class="o">-&gt;</span><span class="n">RMf0</span><span class="p">;</span> <span class="n">RMf2</span><span class="o">-&gt;</span><span class="n">RRMf1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output vbox">
+<div class="box-flex1 output_subarea output_display_data">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.28.0 (20121121.2234)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="458pt" height="332pt"
+ viewBox="0.00 0.00 458.00 332.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+<title>G</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-328 455,-328 455,5 -4,5"/>
+<!-- f5 -->
+<g id="node1" class="node"><title>f5</title>
+<ellipse fill="none" stroke="black" cx="153" cy="-306" rx="27" ry="18"/>
+<text text-anchor="middle" x="153" y="-300.4" font-family="Times,serif" font-size="14.00">f(5)</text>
+</g>
+<!-- Lf3 -->
+<g id="node5" class="node"><title>Lf3</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-234" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-228.4" font-family="Times,serif" font-size="14.00">f(3)</text>
+</g>
+<!-- f5&#45;&gt;Lf3 -->
+<g id="edge2" class="edge"><title>f5&#45;&gt;Lf3</title>
+<path fill="none" stroke="black" d="M141.016,-289.465C134.024,-280.402 125.064,-268.786 117.215,-258.612"/>
+<polygon fill="black" stroke="black" points="119.83,-256.272 110.951,-250.492 114.288,-260.548 119.83,-256.272"/>
+</g>
+<!-- Rf4 -->
+<g id="node15" class="node"><title>Rf4</title>
+<ellipse fill="none" stroke="black" cx="207" cy="-234" rx="27" ry="18"/>
+<text text-anchor="middle" x="207" y="-228.4" font-family="Times,serif" font-size="14.00">f(4)</text>
+</g>
+<!-- f5&#45;&gt;Rf4 -->
+<g id="edge4" class="edge"><title>f5&#45;&gt;Rf4</title>
+<path fill="none" stroke="black" d="M164.984,-289.465C171.976,-280.402 180.936,-268.786 188.785,-258.612"/>
+<polygon fill="black" stroke="black" points="191.712,-260.548 195.049,-250.492 186.17,-256.272 191.712,-260.548"/>
+</g>
+<!-- Lf1 -->
+<g id="node2" class="node"><title>Lf1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-156.4" font-family="Times,serif" font-size="14.00">f(1)</text>
+</g>
+<!-- LLf0 -->
+<g id="node3" class="node"><title>LLf0</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-84.4" font-family="Times,serif" font-size="14.00">f(0)</text>
+</g>
+<!-- Lf2 -->
+<g id="node4" class="node"><title>Lf2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-156.4" font-family="Times,serif" font-size="14.00">f(2)</text>
+</g>
+<!-- Lf2&#45;&gt;LLf0 -->
+<g id="edge20" class="edge"><title>Lf2&#45;&gt;LLf0</title>
+<path fill="none" stroke="black" d="M84.4297,-146.834C74.2501,-136.938 60.4761,-123.546 48.9694,-112.359"/>
+<polygon fill="black" stroke="black" points="51.4055,-109.846 41.7957,-105.385 46.5259,-114.865 51.4055,-109.846"/>
+</g>
+<!-- LLf1 -->
+<g id="node9" class="node"><title>LLf1</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-84.4" font-family="Times,serif" font-size="14.00">f(1)</text>
+</g>
+<!-- Lf2&#45;&gt;LLf1 -->
+<g id="edge18" class="edge"><title>Lf2&#45;&gt;LLf1</title>
+<path fill="none" stroke="black" d="M99,-143.697C99,-135.983 99,-126.712 99,-118.112"/>
+<polygon fill="black" stroke="black" points="102.5,-118.104 99,-108.104 95.5001,-118.104 102.5,-118.104"/>
+</g>
+<!-- Lf3&#45;&gt;Lf1 -->
+<g id="edge8" class="edge"><title>Lf3&#45;&gt;Lf1</title>
+<path fill="none" stroke="black" d="M84.4297,-218.834C74.2501,-208.938 60.4761,-195.546 48.9694,-184.359"/>
+<polygon fill="black" stroke="black" points="51.4055,-181.846 41.7957,-177.385 46.5259,-186.865 51.4055,-181.846"/>
+</g>
+<!-- Lf3&#45;&gt;Lf2 -->
+<g id="edge6" class="edge"><title>Lf3&#45;&gt;Lf2</title>
+<path fill="none" stroke="black" d="M99,-215.697C99,-207.983 99,-198.712 99,-190.112"/>
+<polygon fill="black" stroke="black" points="102.5,-190.104 99,-180.104 95.5001,-190.104 102.5,-190.104"/>
+</g>
+<!-- RRf1 -->
+<g id="node6" class="node"><title>RRf1</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="171" y="-84.4" font-family="Times,serif" font-size="14.00">f(1)</text>
+</g>
+<!-- RRMf1 -->
+<g id="node7" class="node"><title>RRMf1</title>
+<ellipse fill="none" stroke="black" cx="351" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="351" y="-12.4" font-family="Times,serif" font-size="14.00">f(1)</text>
+</g>
+<!-- RRf0 -->
+<g id="node8" class="node"><title>RRf0</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="243" y="-84.4" font-family="Times,serif" font-size="14.00">f(0)</text>
+</g>
+<!-- RMf0 -->
+<g id="node10" class="node"><title>RMf0</title>
+<ellipse fill="none" stroke="black" cx="423" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="423" y="-12.4" font-family="Times,serif" font-size="14.00">f(0)</text>
+</g>
+<!-- RMf1 -->
+<g id="node11" class="node"><title>RMf1</title>
+<ellipse fill="none" stroke="black" cx="315" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="315" y="-84.4" font-family="Times,serif" font-size="14.00">f(1)</text>
+</g>
+<!-- Rf2 -->
+<g id="node12" class="node"><title>Rf2</title>
+<ellipse fill="none" stroke="black" cx="207" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="207" y="-156.4" font-family="Times,serif" font-size="14.00">f(2)</text>
+</g>
+<!-- Rf2&#45;&gt;RRf1 -->
+<g id="edge14" class="edge"><title>Rf2&#45;&gt;RRf1</title>
+<path fill="none" stroke="black" d="M198.65,-144.765C194.288,-136.283 188.853,-125.714 183.959,-116.197"/>
+<polygon fill="black" stroke="black" points="186.99,-114.439 179.304,-107.147 180.765,-117.641 186.99,-114.439"/>
+</g>
+<!-- Rf2&#45;&gt;RRf0 -->
+<g id="edge16" class="edge"><title>Rf2&#45;&gt;RRf0</title>
+<path fill="none" stroke="black" d="M215.35,-144.765C219.712,-136.283 225.147,-125.714 230.041,-116.197"/>
+<polygon fill="black" stroke="black" points="233.235,-117.641 234.696,-107.147 227.01,-114.439 233.235,-117.641"/>
+</g>
+<!-- RMf2 -->
+<g id="node13" class="node"><title>RMf2</title>
+<ellipse fill="none" stroke="black" cx="387" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="387" y="-84.4" font-family="Times,serif" font-size="14.00">f(2)</text>
+</g>
+<!-- RMf2&#45;&gt;RRMf1 -->
+<g id="edge28" class="edge"><title>RMf2&#45;&gt;RRMf1</title>
+<path fill="none" stroke="black" d="M378.65,-72.7646C374.288,-64.2831 368.853,-53.7144 363.959,-44.1974"/>
+<polygon fill="black" stroke="black" points="366.99,-42.4395 359.304,-35.1473 360.765,-45.6409 366.99,-42.4395"/>
+</g>
+<!-- RMf2&#45;&gt;RMf0 -->
+<g id="edge26" class="edge"><title>RMf2&#45;&gt;RMf0</title>
+<path fill="none" stroke="black" d="M395.35,-72.7646C399.712,-64.2831 405.147,-53.7144 410.041,-44.1974"/>
+<polygon fill="black" stroke="black" points="413.235,-45.6409 414.696,-35.1473 407.01,-42.4395 413.235,-45.6409"/>
+</g>
+<!-- Rf3 -->
+<g id="node14" class="node"><title>Rf3</title>
+<ellipse fill="none" stroke="black" cx="315" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="315" y="-156.4" font-family="Times,serif" font-size="14.00">f(3)</text>
+</g>
+<!-- Rf3&#45;&gt;RMf1 -->
+<g id="edge24" class="edge"><title>Rf3&#45;&gt;RMf1</title>
+<path fill="none" stroke="black" d="M315,-143.697C315,-135.983 315,-126.712 315,-118.112"/>
+<polygon fill="black" stroke="black" points="318.5,-118.104 315,-108.104 311.5,-118.104 318.5,-118.104"/>
+</g>
+<!-- Rf3&#45;&gt;RMf2 -->
+<g id="edge22" class="edge"><title>Rf3&#45;&gt;RMf2</title>
+<path fill="none" stroke="black" d="M329.57,-146.834C339.75,-136.938 353.524,-123.546 365.031,-112.359"/>
+<polygon fill="black" stroke="black" points="367.474,-114.865 372.204,-105.385 362.595,-109.846 367.474,-114.865"/>
+</g>
+<!-- Rf4&#45;&gt;Rf2 -->
+<g id="edge12" class="edge"><title>Rf4&#45;&gt;Rf2</title>
+<path fill="none" stroke="black" d="M207,-215.697C207,-207.983 207,-198.712 207,-190.112"/>
+<polygon fill="black" stroke="black" points="210.5,-190.104 207,-180.104 203.5,-190.104 210.5,-190.104"/>
+</g>
+<!-- Rf4&#45;&gt;Rf3 -->
+<g id="edge10" class="edge"><title>Rf4&#45;&gt;Rf3</title>
+<path fill="none" stroke="black" d="M225.812,-220.807C243.002,-209.665 268.618,-193.062 287.993,-180.504"/>
+<polygon fill="black" stroke="black" points="289.916,-183.429 296.403,-175.053 286.108,-177.555 289.916,-183.429"/>
+</g>
+</g>
+</svg>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">dot</span> <span class="o">--</span><span class="n">format</span> <span class="n">svg</span> <span class="o">--</span> 
+<span class="n">digraph</span> <span class="n">G</span> <span class="p">{</span> 
+    <span class="n">f5</span><span class="o">-&gt;</span><span class="n">f3</span><span class="p">;</span> <span class="n">f5</span><span class="o">-&gt;</span><span class="n">f4</span><span class="p">;</span>  
+    <span class="n">f3</span><span class="o">-&gt;</span><span class="n">f2</span><span class="p">;</span> <span class="n">f3</span><span class="o">-&gt;</span><span class="n">f1</span><span class="p">;</span>
+    <span class="n">f4</span><span class="o">-&gt;</span><span class="n">f3</span><span class="p">;</span> <span class="n">f4</span><span class="o">-&gt;</span><span class="n">f2</span><span class="p">;</span>
+    <span class="n">f2</span><span class="o">-&gt;</span><span class="n">f1</span><span class="p">;</span> <span class="n">f2</span><span class="o">-&gt;</span><span class="n">f0</span><span class="p">;</span>
+    <span class="n">f2</span><span class="o">-&gt;</span><span class="n">f1</span><span class="p">;</span> <span class="n">f2</span><span class="o">-&gt;</span><span class="n">f0</span><span class="p">;</span>
+    <span class="n">f3</span><span class="o">-&gt;</span><span class="n">f2</span><span class="p">;</span> <span class="n">f3</span><span class="o">-&gt;</span><span class="n">f1</span><span class="p">;</span>
+    <span class="n">f2</span><span class="o">-&gt;</span><span class="n">f0</span><span class="p">;</span> <span class="n">f2</span><span class="o">-&gt;</span><span class="n">f1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output vbox">
+<div class="box-flex1 output_subarea output_display_data">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.28.0 (20121121.2234)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="134pt" height="332pt"
+ viewBox="0.00 0.00 134.00 332.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+<title>G</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-328 131,-328 131,5 -4,5"/>
+<!-- f5 -->
+<g id="node1" class="node"><title>f5</title>
+<ellipse fill="none" stroke="black" cx="63" cy="-306" rx="27" ry="18"/>
+<text text-anchor="middle" x="63" y="-300.4" font-family="Times,serif" font-size="14.00">f5</text>
+</g>
+<!-- f3 -->
+<g id="node3" class="node"><title>f3</title>
+<ellipse fill="none" stroke="black" cx="36" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="36" y="-156.4" font-family="Times,serif" font-size="14.00">f3</text>
+</g>
+<!-- f5&#45;&gt;f3 -->
+<g id="edge2" class="edge"><title>f5&#45;&gt;f3</title>
+<path fill="none" stroke="black" d="M59.7432,-287.871C55.1415,-263.67 46.688,-219.211 41.2086,-190.393"/>
+<polygon fill="black" stroke="black" points="44.5748,-189.359 39.2684,-180.189 37.698,-190.667 44.5748,-189.359"/>
+</g>
+<!-- f4 -->
+<g id="node5" class="node"><title>f4</title>
+<ellipse fill="none" stroke="black" cx="91" cy="-234" rx="27" ry="18"/>
+<text text-anchor="middle" x="91" y="-228.4" font-family="Times,serif" font-size="14.00">f4</text>
+</g>
+<!-- f5&#45;&gt;f4 -->
+<g id="edge4" class="edge"><title>f5&#45;&gt;f4</title>
+<path fill="none" stroke="black" d="M69.6356,-288.411C72.9134,-280.216 76.9442,-270.14 80.6181,-260.955"/>
+<polygon fill="black" stroke="black" points="83.9477,-262.055 84.412,-251.47 77.4484,-259.455 83.9477,-262.055"/>
+</g>
+<!-- f2 -->
+<g id="node7" class="node"><title>f2</title>
+<ellipse fill="none" stroke="black" cx="91" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="91" y="-84.4" font-family="Times,serif" font-size="14.00">f2</text>
+</g>
+<!-- f3&#45;&gt;f2 -->
+<g id="edge22" class="edge"><title>f3&#45;&gt;f2</title>
+<path fill="none" stroke="black" d="M43.1943,-144.411C49.6695,-134.841 59.061,-122.703 67.896,-112.417"/>
+<polygon fill="black" stroke="black" points="70.7712,-114.451 74.7959,-104.65 65.5379,-109.802 70.7712,-114.451"/>
+</g>
+<!-- f3&#45;&gt;f2 -->
+<g id="edge6" class="edge"><title>f3&#45;&gt;f2</title>
+<path fill="none" stroke="black" d="M52.0626,-147.503C60.4124,-138.475 70.2952,-126.33 78.1396,-115.613"/>
+<polygon fill="black" stroke="black" points="81.0207,-117.601 83.9254,-107.412 75.3008,-113.566 81.0207,-117.601"/>
+</g>
+<!-- f1 -->
+<g id="node9" class="node"><title>f1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-12.4" font-family="Times,serif" font-size="14.00">f1</text>
+</g>
+<!-- f3&#45;&gt;f1 -->
+<g id="edge24" class="edge"><title>f3&#45;&gt;f1</title>
+<path fill="none" stroke="black" d="M30.3777,-144.153C26.2676,-120.05 23.1365,-75.4474 23.2766,-46.5141"/>
+<polygon fill="black" stroke="black" points="26.781,-46.3402 23.4953,-36.2678 19.7826,-46.1908 26.781,-46.3402"/>
+</g>
+<!-- f3&#45;&gt;f1 -->
+<g id="edge8" class="edge"><title>f3&#45;&gt;f1</title>
+<path fill="none" stroke="black" d="M39.4989,-143.871C40.5289,-119.539 37.9696,-74.7296 34.1334,-45.9272"/>
+<polygon fill="black" stroke="black" points="37.5512,-45.1179 32.6054,-35.7483 30.6288,-46.1571 37.5512,-45.1179"/>
+</g>
+<!-- f4&#45;&gt;f3 -->
+<g id="edge10" class="edge"><title>f4&#45;&gt;f3</title>
+<path fill="none" stroke="black" d="M79.0658,-217.811C71.7864,-208.546 62.3374,-196.52 54.1456,-186.094"/>
+<polygon fill="black" stroke="black" points="56.8413,-183.86 47.9109,-178.159 51.337,-188.185 56.8413,-183.86"/>
+</g>
+<!-- f4&#45;&gt;f2 -->
+<g id="edge12" class="edge"><title>f4&#45;&gt;f2</title>
+<path fill="none" stroke="black" d="M91,-215.871C91,-191.67 91,-147.211 91,-118.393"/>
+<polygon fill="black" stroke="black" points="94.5001,-118.189 91,-108.189 87.5001,-118.189 94.5001,-118.189"/>
+</g>
+<!-- f2&#45;&gt;f1 -->
+<g id="edge28" class="edge"><title>f2&#45;&gt;f1</title>
+<path fill="none" stroke="black" d="M70.4876,-77.7533C59.1517,-68.6724 46.233,-55.5523 36.8698,-44.0129"/>
+<polygon fill="black" stroke="black" points="39.5929,-41.8116 30.7538,-35.9702 34.0209,-46.0487 39.5929,-41.8116"/>
+</g>
+<!-- f2&#45;&gt;f1 -->
+<g id="edge14" class="edge"><title>f2&#45;&gt;f1</title>
+<path fill="none" stroke="black" d="M77.4272,-74.1548C68.6875,-64.5957 57.1659,-51.994 47.3422,-41.2493"/>
+<polygon fill="black" stroke="black" points="49.884,-38.8424 40.5532,-33.8238 44.7178,-43.5658 49.884,-38.8424"/>
+</g>
+<!-- f2&#45;&gt;f1 -->
+<g id="edge18" class="edge"><title>f2&#45;&gt;f1</title>
+<path fill="none" stroke="black" d="M87.2639,-72.055C79.7605,-61.3672 67.2159,-47.5864 55.1488,-36.7485"/>
+<polygon fill="black" stroke="black" points="57.2313,-33.9249 47.3458,-30.1135 52.6968,-39.2577 57.2313,-33.9249"/>
+</g>
+<!-- f0 -->
+<g id="node14" class="node"><title>f0</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-12.4" font-family="Times,serif" font-size="14.00">f0</text>
+</g>
+<!-- f2&#45;&gt;f0 -->
+<g id="edge26" class="edge"><title>f2&#45;&gt;f0</title>
+<path fill="none" stroke="black" d="M81.2937,-73.1159C80.2762,-64.374 81.0626,-53.3369 83.252,-43.5139"/>
+<polygon fill="black" stroke="black" points="86.627,-44.4416 86.0246,-33.8639 79.8992,-42.5086 86.627,-44.4416"/>
+</g>
+<!-- f2&#45;&gt;f0 -->
+<g id="edge16" class="edge"><title>f2&#45;&gt;f0</title>
+<path fill="none" stroke="black" d="M92.9775,-71.6966C93.8591,-63.9827 94.9186,-54.7125 95.9014,-46.1124"/>
+<polygon fill="black" stroke="black" points="99.387,-46.4371 97.0452,-36.1043 92.4323,-45.6422 99.387,-46.4371"/>
+</g>
+<!-- f2&#45;&gt;f0 -->
+<g id="edge20" class="edge"><title>f2&#45;&gt;f0</title>
+<path fill="none" stroke="black" d="M103.969,-74.1548C107.02,-65.7847 108.861,-55.0816 109.116,-45.3352"/>
+<polygon fill="black" stroke="black" points="112.612,-45.1573 108.752,-35.2905 105.616,-45.4105 112.612,-45.1573"/>
+</g>
+</g>
+</svg>
+
+</div>
+</div>
+
+</div>
+</div>
+</div><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># EXERCISE: Write a recursive Fibonacci function!</span>
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span>
+    <span class="c"># put your code here!</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+    </div><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># EXERCISE: Write a recursive factorial function</span>
+<span class="c"># Recall: factorial(x) = factorial(x-1) * x</span>
+<span class="c"># factorial(1) = 1</span>
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+    </div><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># This is the test for the fibonacci code.  </span>
+<span class="c"># Run this after you&#39;ve written your fibonnacci sequence code</span>
+<span class="c"># it will fail if your code is wrong!</span>
+<span class="k">for</span> <span class="n">ii</span><span class="p">,</span><span class="n">ff</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">),[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">21</span><span class="p">]):</span>
+    <span class="k">assert</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span> <span class="o">==</span> <span class="n">ff</span><span class="p">,</span> <span class="s">&quot;Failed to get fibonacci #</span><span class="si">%i</span><span class="s">: </span><span class="si">%i</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ii</span><span class="p">,</span><span class="n">ff</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Success!&quot;</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output vbox">
+<div class="box-flex1 output_subarea output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">AssertionError</span>                            Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-49-3bc6df638a25&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      3</span> <span class="ansired"># it will fail if your code is wrong!</span><span class="ansiblue"></span><span class="ansiblue"></span>
+<span class="ansigreen">      4</span> <span class="ansigreen">for</span> ii<span class="ansiblue">,</span>ff <span class="ansigreen">in</span> zip<span class="ansiblue">(</span>range<span class="ansiblue">(</span><span class="ansicyan">9</span><span class="ansiblue">)</span><span class="ansiblue">,</span><span class="ansiblue">[</span><span class="ansicyan">0</span><span class="ansiblue">,</span><span class="ansicyan">1</span><span class="ansiblue">,</span><span class="ansicyan">1</span><span class="ansiblue">,</span><span class="ansicyan">2</span><span class="ansiblue">,</span><span class="ansicyan">3</span><span class="ansiblue">,</span><span class="ansicyan">5</span><span class="ansiblue">,</span><span class="ansicyan">8</span><span class="ansiblue">,</span><span class="ansicyan">13</span><span class="ansiblue">,</span><span class="ansicyan">21</span><span class="ansiblue">]</span><span class="ansiblue">)</span><span class="ansiblue">:</span><span class="ansiblue"></span>
+<span class="ansigreen">----&gt; 5</span><span class="ansired">     </span><span class="ansigreen">assert</span> fibonacci<span class="ansiblue">(</span>ii<span class="ansiblue">)</span> <span class="ansiblue">==</span> ff<span class="ansiblue">,</span> <span class="ansiblue">&quot;Failed to get fibonacci #%i: %i&quot;</span> <span class="ansiblue">%</span> <span class="ansiblue">(</span>ii<span class="ansiblue">,</span>ff<span class="ansiblue">)</span><span class="ansiblue"></span>
+<span class="ansigreen">      6</span> <span class="ansigreen">print</span> <span class="ansiblue">&quot;Success!&quot;</span><span class="ansiblue"></span>
+
+<span class="ansired">AssertionError</span>: Failed to get fibonacci #0: 0</pre>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+    </div><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># This is the test for the factorial code.  </span>
+<span class="c"># Run this after you&#39;ve written your factorial code</span>
+<span class="c"># it will fail if your code is wrong!</span>
+<span class="k">for</span> <span class="n">ii</span><span class="p">,</span><span class="n">ff</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">),[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="mi">720</span><span class="p">,</span><span class="mi">5040</span><span class="p">,</span><span class="mi">40320</span><span class="p">]):</span>
+    <span class="k">assert</span> <span class="n">factorial</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span> <span class="o">==</span> <span class="n">ff</span><span class="p">,</span> <span class="s">&quot;Failed to get factorial #</span><span class="si">%i</span><span class="s">: </span><span class="si">%i</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ii</span><span class="p">,</span><span class="n">ff</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Success!&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+    </div><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre>
+</pre></div>
+
+</div>
+</div>
+</div>
+    </div><div style=display:none>
+    
+<style type="text/css">
+div.reveal {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+div.addthis_toolbox {
+    visibility: hidden;
+}
+.cm-s-ipython { background-color: black; color: lightblue; }
+.cm-s-ipython span.cm-keyword {color: #00ff00; font-weight: bold;}
+.cm-s-ipython span.cm-number {color: #ee88ee;}
+.cm-s-ipython span.cm-operator {color: lime; font-weight: bold;}
+.cm-s-ipython span.cm-meta {color: white;}
+.cm-s-ipython span.cm-comment {color: cyan; font-style: italic;}
+.cm-s-ipython span.cm-string {color: red;}
+.cm-s-ipython span.cm-error {color: darkred;}
+.cm-s-ipython span.cm-builtin {color: pink; font-weight: bold;}
+.CodeMirror pre.CodeMirror-cursor {color: white; border-left: 1px solid white;}
+.cm-s-ipython span.cm-variable {color: white;}
+div.text_cell_input  {   background-color: black;    color: white;}
+div.text_cell {   background-color: black;    color: white;}
+div#notebook {    background-color: black;     background-image: none;     color: white;}
+div.code_cell { background-color: black;    color: white;}
+div.metaedit .maintoolbar{    background-color: black;    color: white;}
+body{    background-color: black;    color: white;}
+#notebook_name {  background-color: #333333;    color: white; background-image:none;}
+span.ui-widget-content{  background-color: #333333;    color: white; background-image:none;}
+div.ui-widget-content{  background-color: #333333;    color: white; background-image:none;}
+div#ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only output_collapsed vbox{  
+  background-color: black;    color: white;}
+div.input_area{    background-color: black;    color: white;}
+div.ui-widget-content { background-color: #333333; background-image: none;}
+div.input_prompt {color:#6666CC; font-weight: bold;}
+div.output_prompt {color:#CC6666; font-weight: bold;}
+div.output_text {color:white;}
+div.text_cell_render {color:white;}
+.pln {color:white} 
+.typ {color:#f9f}
+.lit {color:#BBB}
+.kwd {color:#3e3}
+.metaedit {background: transparent; border-color: transparent; color:white;}
+.ui-button-text {background: #112; color:white; border-color:666;}
+.ui-menubar  {background-color: transparent; background: transparent; background-image:none;}
+.ui-widget-header  {background-color: transparent; background: transparent; background-image:none;}
+.ui-helper-clearfix {background-color: transparent; background: transparent; background-image:none;}
+.ui-corner-all {background: #112; color: white;}
+.ui-widget  {background: #112; color: white;}
+.ui-widget-content {background: #112; color: white;}
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {color:white;}
+div.output_area pre {color:white;}
+.highlight {background-color: #222; color:white;}
+</style>
+
+    </div></section>
+    </section><section>
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1>Recursion Continued</h1>
