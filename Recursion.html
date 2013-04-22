@@ -1801,6 +1801,19 @@ The hierarchymagic extension is already loaded. To reload it, use:
     </div><div style=display:none>
     
 <style type="text/css">
+ol { list-style-type: upper-alpha; }
+reveal.p {
+    font-size: 35px;
+    font-weight: bold;
+}
+reveal {
+    font-size: 35px;
+    font-weight: bold;
+}
+reveal body {
+    font-size: 35px;
+    font-weight: bold;
+}
 div.reveal {
     overflow-y: auto;
     overflow-x: hidden;
@@ -1937,10 +1950,10 @@ end
 </style></p>
 <p>What "end condition" should we use for the factorial function?</p>
 <ol>
-<li>If x=1, return 1 </li>
-<li>If x=0, return 1</li>
-<li>If x=0, return 0</li>
-<li>If x&lt;=1, return 1</li>
+<li>If x eq 1 then return,1 </li>
+<li>If x eq 0 then return,1</li>
+<li>If x eq 0 then return,0</li>
+<li>If x eq 1 or x eq 0 then return,1</li>
 <li>None of the above</li>
 </ol>
 </div><aside class="notes">
@@ -1952,7 +1965,7 @@ end
     </section><section>
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Technically, the correct answer was <code>If x&lt;=1, return 1</code>, because <code>factorial(0)</code> is defined to be 1, but <code>If x=1, return 1</code> will work just fine in general.</p>
+<p>Technically, the correct answer was <code>If x eq 1 or x eq 0, return 1</code>, because <code>factorial(0)</code> is defined to be 1, but <code>If x=1, return 1</code> will work just fine in general.</p>
 <p>So let's add this to our code:</p>
 <pre><code>function factorial,x
     if x leq 1 then return,1
