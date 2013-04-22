@@ -1777,7 +1777,15 @@ div.output_prompt {
 <p>The next big programming topic is called <em>recursion</em>.</p>
 <h2><em>Recursion</em></h2>
 <p>The next little programming topic is called recursion.</p>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="http://i.qkme.me/35tnta.jpg"></p>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>For better or worse, you must visit <a href="http://en.wikipedia.org/wiki/Recursion#Recursive_humor">the wiki page on recursion</a></p>
 <p>Recursion is when a function calls itself.  But, a recursive function <em>must</em> have an "end condition" to avoid an infinite loop.
 If you try to make an infinite loop, you will get a "stack overflow" (python will give you an error).  IDL will just loop indefinitely and fail miserably.</p>
@@ -1818,6 +1826,65 @@ end
     $f(x) = f(x-1)*x$</p>
 <p>That means to evaluate <code>f(x)</code>, you need to evaluate <code>f(x-1)</code>.  </p>
 <p>That means to evaluate <code>f(x-1)</code>, you need to evaluate <code>f(x-2)</code>.  When does it end?</p>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$f(x) = f(x-1)*x$</p>
+<p>Think of this with the number 5: what happens when you get to <code>f(x-5) = f(0)</code>?  </p>
+<p>If you followed the formula to this point, you'd now have <code>f(something)*0</code>, which means the answer would <em>always</em> be zero.  Clearly, that's not what we want.</p>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's define our factorial function as we have it so far:</p>
+<pre><code>function factorial,x
+    return,factorial(x-1) * x
+end
+</code></pre>
+<p>This is the <em>recursive</em> version: the function calls itself.  However, as we have it written here, it will cause infinite recursion (bad!)</p>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="files/images/blueclicker.png" width=200 style='float: left;'></p>
+<p>What "end condition" should we use for the factorial function?</p>
+<pre><code>A. If x=1, return 1 
+B. If x=0, return 1
+C. If x=0, return 0
+D. If x&lt;=1, return 1
+E. None of the above
+</code></pre>
+</div><aside class="notes">
+    
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>D, but A is also acceptable.</p>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Technically, the correct answer was <code>If x&lt;=1, return 1</code>, because <code>factorial(0)</code> is defined to be 1, but <code>If x=1, return 1</code> will work just fine in general.</p>
+<p>So let's add this to our code:</p>
+<pre><code>function factorial,x
+    if x leq 1 then return,1
+    return,factorial(x-1) * x
+end
+</code></pre>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that this is just a `clever trick' that does the same thing as the more verbose version:</p>
+<pre><code>function factorial,x
+    if x leq 1 then begin
+        return,1
+    endif else begin
+        return,factorial(x-1) * x
+    endelse
+end
+</code></pre>
+<p>Since the function stops after the first <code>return</code> statement, it's OK for us to use the shorter version.</p>
 </div></section>
     </section><section>
     <section>
