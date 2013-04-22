@@ -258,26 +258,16 @@ span#notebook_name {
     position: relative;
 }
 
-#notification_area {
+#notification {
     position: absolute;
-    right: 0px;
-    top: 0px;
-    height: 25px;
-    padding: 3px 0px;
-    padding-right: 3px;
-    z-index: 10;
-}
-
-.notification_widget{
-    float : right;
-    right: 0px;
-    top: 1px;
+    right: 3px;
+    top: 3px;
     height: 25px;
     padding: 3px 6px;
     z-index: 10;
 }
 
-.toolbar {
+#toolbar {
     padding: 3px 15px;
 }
 
@@ -327,10 +317,6 @@ div#notebook {
 
 div#pager_splitter {
     height: 8px;
-}
-
-#pager_container {
-    position : relative;
 }
 
 div#pager {
@@ -445,7 +431,7 @@ div.output_area {
 /* This class is for the output subarea inside the output_area and after
    the prompt div. */
 div.output_subarea {
-    padding: 0.44em 0.4em 0.4em 1px;
+    padding: 0.4em 0.4em 0.4em 0.4em;
 }
 
 /* The rest of the output_* classes are for special styling of the different
@@ -613,7 +599,6 @@ pre, code, kbd, samp { white-space: pre-wrap; }
 .js-error {
     color: darkred;
 }
-
 </style>
 <style type="text/css">
 .rendered_html {color: black;}
@@ -634,8 +619,8 @@ pre, code, kbd, samp { white-space: pre-wrap; }
 .rendered_html ol {list-style:upper-roman; margin: 1em 2em;}
 .rendered_html ol ol {list-style:upper-alpha; margin: 0em 2em;}
 .rendered_html ol ol ol {list-style:decimal; margin: 0em 2em;}
-.rendered_html ol ol ol ol {list-style:lower-alpha; margin: 0em 2em;}
-.rendered_html ol ol ol ol ol {list-style:lower-roman; margin: 0em 2em;}
+.rendered_html ol ol ol ol {list-style:lower-alpha; margin 0em 2em;}
+.rendered_html ol ol ol ol ol {list-style:lower-roman; 0em 2em;}
 
 .rendered_html hr {
     color: black;
@@ -1812,7 +1797,7 @@ reveal div.prompt {
 reveal div.input_prompt {
     display: none;
 }
-html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal iframe, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6, .reveal p, .reveal blockquote, .reveal pre, .reveal a, .reveal abbr, .reveal acronym, .reveal address, .reveal big, .reveal cite, .reveal code, .reveal del, .reveal dfn, .reveal em, .reveal img, .reveal ins, .reveal kbd, .reveal q, .reveal s, .reveal samp, .reveal small, .reveal strike, .reveal strong, .reveal sub, .reveal sup, .reveal tt, .reveal var, .reveal b, .reveal u, .reveal i, .reveal center, .reveal dl, .reveal dt, .reveal dd, .reveal ol, .reveal ul, .reveal li, .reveal fieldset, .reveal form, .reveal label, .reveal legend, .reveal table, .reveal caption, .reveal tbody, .reveal tfoot, .reveal thead, .reveal tr, .reveal th, .reveal td, .reveal article, .reveal aside, .reveal canvas, .reveal details, .reveal embed, .reveal figure, .reveal figcaption, .reveal footer, .reveal header, .reveal hgroup, .reveal menu, .reveal nav, .reveal output, .reveal ruby, .reveal section, .reveal summary, .reveal time, .reveal mark, .reveal audio, video {
+html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal iframe, .reveal p, .reveal blockquote, .reveal pre, .reveal a, .reveal abbr, .reveal acronym, .reveal address, .reveal big, .reveal cite, .reveal code, .reveal del, .reveal dfn, .reveal em, .reveal img, .reveal ins, .reveal kbd, .reveal q, .reveal s, .reveal samp, .reveal small, .reveal strike, .reveal strong, .reveal sub, .reveal sup, .reveal tt, .reveal var, .reveal b, .reveal u, .reveal i, .reveal center, .reveal dl, .reveal dt, .reveal dd, .reveal ol, .reveal ul, .reveal li, .reveal fieldset, .reveal form, .reveal label, .reveal legend, .reveal table, .reveal caption, .reveal tbody, .reveal tfoot, .reveal thead, .reveal tr, .reveal th, .reveal td, .reveal article, .reveal aside, .reveal canvas, .reveal details, .reveal embed, .reveal figure, .reveal figcaption, .reveal footer, .reveal header, .reveal hgroup, .reveal menu, .reveal nav, .reveal output, .reveal ruby, .reveal section, .reveal summary, .reveal time, .reveal mark, .reveal audio, video {
     font-size: 35px;
 }
 *{-webkit-text-size-adjust:auto !important; -ms-text-size-adjust: auto !important;}
